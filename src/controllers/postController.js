@@ -38,7 +38,7 @@ const deletePost = async (req, res) => {
         const clearPost = await Post.destroy({ where: {id, user_id: req.user.id}});
         res.status(200).json({ message: "Borrado", clearPost});
     }catch(error){
-        res.status(500).json({ message: "Error al eliminar"});
+        res.status(500).json({ message: "Error al eliminar",error});
     }
 }
 
