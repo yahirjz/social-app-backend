@@ -14,12 +14,12 @@ const createPost = async (req, res) => {
     }
 }
 
-//Función para obtener el 
+//Función para obtener 
 const getPost = async ( req, res ) => {
     try{
         // Obtenemos todo el contenido del usuario
-        const Allpost = await Post.findAll({ where: {user_id: req.user.id}});
-        res.status(200).json( Allpost )
+        const myPosts = await Post.findAll({ where: {user_id: req.user.id}});
+        res.status(200).json( myPosts )
     }catch(error){
         res.status(500).json({ mensaje: "Error al obtener los Post"})
     }
@@ -49,6 +49,11 @@ const updatePost = async (req, res) =>{
     try{
         //Actualizamos el contenido
         const update = await Post.update( {content, img_url},{ where: {id, user_id:req.user.id}});
+
+        if(update[0] === 0){
+            return res.status(404).json({ message: "No se encontro el posts"});
+        }
+
         res.status(200).json({mensaje: "Contenido actualizado", update});
     }catch(error){
         res.status(500).json({ message: "Error al modificar mensaje"});
