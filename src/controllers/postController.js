@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 //Función para crear 
 const createPost = async (req, res) => {
@@ -18,7 +19,14 @@ const createPost = async (req, res) => {
 const getPost = async ( req, res ) => {
     try{
         // Obtenemos todo el contenido del usuario
-        const myPosts = await Post.findAll({ where: {user_id: req.user.id}});
+        const myPosts = await Post.findAll({ where: {user_id: req.user.id},
+            include: [
+                {
+                    model:User,
+                    attributes:['username','foto_url']
+                }
+            ]
+        });
         res.status(200).json( myPosts )
     }catch(error){
         res.status(500).json({ mensaje: "Error al obtener los Post"})
