@@ -9,10 +9,13 @@ const userRoutes = require('./routes/userRoutes');
 require('./database')
 
 // importación de modelos 
-require('./models/User');
-require('./models/Post');
+const User = require('./models/User');
+const Post = require('./models/Post');
 require('./models/Followers');
 
+//Asociamos los modelos
+User.hasMany(Post, { foreignKey:'user_id'});
+Post.belongsTo(User, { foreignKey:'user_id'})
 
 
 const app = express();
