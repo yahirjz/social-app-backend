@@ -20,6 +20,7 @@ const postFollow = async (req, res) => {
         res.status(500).json({ message: "Error al seguir"})
     }
 }
+
 // Función para borrar
 const deleteFollow = async(req, res) =>{
     const { id } = req.params;

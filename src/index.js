@@ -31,6 +31,10 @@ app.use('/follower', followRoute)
 app.use('/feed', feedRoutes);
 app.use('/user', userRoutes);
 
-app.listen(port, () => {
-    console.log(` Corriendo en el puerto http://localhost:${port}`);
-})
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(port, () => {
+        console.log(`Corriendo en el puerto http://localhost:${port}`);
+    });
+}
+
+module.exports = app;

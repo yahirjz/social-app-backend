@@ -20,8 +20,9 @@ async function checkConexion() {
         console.log(" Error en conexión: ", error)
     }
 }
+// En entorno de pruebas no sincronizamos ni dejamos procesos colgados
+if (process.env.NODE_ENV !== 'test') {
+    checkConexion();
+}
 
-checkConexion();
-
-// Exportamos sequelize
 module.exports = sequelize;
