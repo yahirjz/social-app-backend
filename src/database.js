@@ -24,5 +24,5 @@ async function checkConexion() {
 if (process.env.NODE_ENV !== 'test') {
     checkConexion();
 }
-
+ 
 module.exports = sequelize;
