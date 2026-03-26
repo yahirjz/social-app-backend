@@ -64,7 +64,7 @@ const login = async (req, res) => {
         )
 
         // Si todo esta ok
-        res.status(200).json({ message: `Bienvenido ${userSearch.email}`, token})
+        res.status(200).json({ message: `Bienvenido ${userSearch.email}`, token, user_id: userSearch.id })
 
     }catch(error){
         res.status(500).json({ message:' Error al iniciar sesión ', error})

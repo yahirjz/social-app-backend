@@ -54,6 +54,8 @@ Todas las rutas requieren el Header: `Authorization: Bearer <token>` **(excepto 
 ### Seguidores
 - `POST /follower/:id/follow` - Comienza a seguir al id del usuario solicitado.
 - `DELETE /follower/:id/unfollow` - Deja de seguir al usuario.
+- `GET /follower/following` - Obtiene la lista de usuarios a los que sigo.
+- `GET /follower/followers` - Obtiene la lista de mis seguidores.
 
 ### Muro (Feed)
 - `GET /feed` - Recupera la lista interactiva de publicaciones con los metadatos completos de su creador (Username, foto de perfil, timestamps).

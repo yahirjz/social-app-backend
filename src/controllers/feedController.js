@@ -9,7 +9,7 @@ const feedGlobal = async (req, res) => {
             include:[
                 {
                     model: User,
-                    attributes:['username', 'foto_url']
+                    attributes:['id', 'username', 'foto_url']
                 }
             ]
         })
